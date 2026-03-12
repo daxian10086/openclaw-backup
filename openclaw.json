@@ -294,6 +294,9 @@
       "clawhub": {
         "enabled": true
       },
+      "coding-agent": {
+        "enabled": true
+      },
       "eightctl": {
         "enabled": false
       },
@@ -305,6 +308,9 @@
       },
       "gog": {
         "enabled": false
+      },
+      "github": {
+        "enabled": true
       },
       "goplaces": {
         "enabled": false
