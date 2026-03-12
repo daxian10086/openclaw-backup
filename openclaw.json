@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.8",
-    "lastTouchedAt": "2026-03-12T10:03:52.159Z"
+    "lastTouchedAt": "2026-03-12T10:05:57.901Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-05T16:16:05.545Z",
@@ -292,7 +292,7 @@
         "enabled": false
       },
       "clawhub": {
-        "enabled": false
+        "enabled": true
       },
       "eightctl": {
         "enabled": false
