@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.8",
-    "lastTouchedAt": "2026-03-17T12:07:40.175Z"
+    "lastTouchedAt": "2026-03-12T10:48:22.133Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-05T16:16:05.545Z",
@@ -188,7 +188,6 @@
       "compaction": {
         "mode": "safeguard"
       },
-      "timeoutSeconds": 300,
       "maxConcurrent": 4,
       "subagents": {
         "maxConcurrent": 8
@@ -371,7 +370,7 @@
         "enabled": false
       },
       "feishu-openclaw-plugin": {
-        "enabled": false
+        "enabled": true
       },
       "wecom": {
         "enabled": true
