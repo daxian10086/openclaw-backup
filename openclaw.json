@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-18T00:08:46.291Z"
+    "lastTouchedAt": "2026-03-21T12:08:43.600Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-05T16:16:05.545Z",
@@ -182,11 +182,64 @@
         "primary": "coze/doubao-seed-1-8-251228"
       },
       "workspace": "/workspace/projects/workspace",
+      "bootstrapMaxChars": 10000,
+      "bootstrapTotalMaxChars": 25000,
+      "contextTokens": 128000,
       "memorySearch": {
-        "enabled": true
+        "enabled": true,
+        "sources": [
+          "memory",
+          "sessions"
+        ],
+        "experimental": {
+          "sessionMemory": true
+        },
+        "provider": "local",
+        "fallback": "none",
+        "chunking": {
+          "tokens": 300,
+          "overlap": 100
+        },
+        "sync": {
+          "sessions": {
+            "deltaBytes": 50000,
+            "deltaMessages": 30
+          }
+        },
+        "query": {
+          "maxResults": 15,
+          "minScore": 0.3,
+          "hybrid": {
+            "enabled": true,
+            "vectorWeight": 0.7,
+            "textWeight": 0.3,
+            "candidateMultiplier": 8,
+            "mmr": {
+              "enabled": true,
+              "lambda": 0.5
+            },
+            "temporalDecay": {
+              "enabled": true,
+              "halfLifeDays": 60
+            }
+          }
+        }
+      },
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
       },
       "compaction": {
-        "mode": "safeguard"
+        "mode": "safeguard",
+        "memoryFlush": {
+          "enabled": true,
+          "softThresholdTokens": 2000,
+          "forceFlushTranscriptBytes": 2097152
+        }
+      },
+      "thinkingDefault": "medium",
+      "heartbeat": {
+        "lightContext": true
       },
       "maxConcurrent": 4,
       "subagents": {
@@ -213,6 +266,15 @@
     "restart": true,
     "ownerDisplay": "raw"
   },
+  "hooks": {
+    "internal": {
+      "entries": {
+        "session-memory": {
+          "messages": 30
+        }
+      }
+    }
+  },
   "channels": {
     "feishu": {
       "allowFrom": [
@@ -225,7 +287,7 @@
       "domain": "feishu",
       "enabled": true,
       "groupAllowFrom": [],
-      "groupPolicy": "open",
+      "groupPolicy": "allowlist",
       "requireMention": true,
       "streaming": true
     }
@@ -239,7 +301,7 @@
       "allowedOrigins": [
         "https://dev.coze.site"
       ],
-      "dangerouslyDisableDeviceAuth": true
+      "dangerouslyDisableDeviceAuth": false
     },
     "auth": {
       "mode": "token",
@@ -379,7 +441,7 @@
     "installs": {
       "wecom": {
         "source": "npm",
-        "spec": "@wecom/wecom-openclaw-plugin",
+        "spec": "@wecom/wecom-openclaw-plugin@1.0.0",
         "installPath": "/workspace/projects/extensions/wecom",
         "version": "1.0.0",
         "resolvedName": "@wecom/wecom-openclaw-plugin",
@@ -392,7 +454,7 @@
       },
       "openclaw-wechat": {
         "source": "npm",
-        "spec": "@canghe/openclaw-wechat",
+        "spec": "@canghe/openclaw-wechat@0.1.13",
         "installPath": "/workspace/projects/extensions/openclaw-wechat",
         "version": "0.1.13",
         "resolvedName": "@canghe/openclaw-wechat",
