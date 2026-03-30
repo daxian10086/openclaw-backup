@@ -1,12 +1,12 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-21T15:47:40.011Z"
+    "lastTouchedVersion": "2026.3.23-2",
+    "lastTouchedAt": "2026-03-26T08:41:35.354Z"
   },
   "wizard": {
-    "lastRunAt": "2026-02-05T16:16:05.545Z",
-    "lastRunVersion": "2026.2.1",
-    "lastRunCommand": "onboard",
+    "lastRunAt": "2026-03-24T14:34:14.538Z",
+    "lastRunVersion": "2026.3.23-2",
+    "lastRunCommand": "doctor",
     "lastRunMode": "local"
   },
   "browser": {
@@ -181,6 +181,9 @@
       "imageModel": {
         "primary": "coze/doubao-seed-1-8-251228"
       },
+      "imageGenerationModel": {
+        "primary": "google/gemini-3-pro-image-preview"
+      },
       "workspace": "/workspace/projects/workspace",
       "bootstrapMaxChars": 10000,
       "bootstrapTotalMaxChars": 25000,
@@ -241,6 +244,8 @@
         }
       },
       "thinkingDefault": "medium",
+      "blockStreamingDefault": "on",
+      "blockStreamingBreak": "message_end",
       "heartbeat": {
         "lightContext": true
       },
@@ -280,6 +285,7 @@
   },
   "channels": {
     "feishu": {
+      "blockStreaming": true,
       "allowFrom": [
         "ou_ecc5f6e32e1fce5bb204da93e7bf23ce"
       ],
@@ -288,11 +294,14 @@
       "connectionMode": "websocket",
       "dmPolicy": "allowlist",
       "domain": "feishu",
-      "enabled": true,
+      "enabled": false,
       "groupAllowFrom": [],
       "groupPolicy": "allowlist",
       "requireMention": true,
       "streaming": true
+    },
+    "openclaw-weixin": {
+      "accounts": {}
     }
   },
   "gateway": {
@@ -330,6 +339,9 @@
     },
     "entries": {
       "1password": {
+        "enabled": true
+      },
+      "clawsec-suite": {
         "enabled": true
       },
       "apple-notes": {
@@ -383,9 +395,6 @@
       "local-places": {
         "enabled": false
       },
-      "nano-banana-pro": {
-        "enabled": false
-      },
       "nano-pdf": {
         "enabled": false
       },
@@ -426,19 +435,31 @@
   },
   "plugins": {
     "allow": [
-      "wecom",
-      "openclaw-wechat",
-      "feishu"
+      "openclaw-weixin",
+      "memos-cloud-openclaw-plugin",
+      "coze-openclaw-plugin"
     ],
     "entries": {
       "feishu": {
-        "enabled": true
+        "enabled": false
       },
       "wecom": {
-        "enabled": true
+        "enabled": false
       },
       "openclaw-wechat": {
+        "enabled": false
+      },
+      "openclaw-weixin": {
         "enabled": true
+      },
+      "memos-cloud-openclaw-plugin": {
+        "enabled": true
+      },
+      "coze-openclaw-plugin": {
+        "enabled": true,
+        "config": {
+          "apiKey": "${COZE_WORKLOAD_IDENTITY_API_KEY}"
+        }
       }
     },
     "installs": {
@@ -467,6 +488,45 @@
         "shasum": "4ac799584365df97ed7f3b0e5c4dc1edfa79cff9",
         "resolvedAt": "2026-03-11T11:16:09.885Z",
         "installedAt": "2026-03-11T11:17:36.833Z"
+      },
+      "openclaw-weixin": {
+        "source": "npm",
+        "spec": "@tencent-weixin/openclaw-weixin@latest",
+        "installPath": "/workspace/projects/extensions/openclaw-weixin",
+        "version": "2.0.1",
+        "resolvedName": "@tencent-weixin/openclaw-weixin",
+        "resolvedVersion": "2.0.1",
+        "resolvedSpec": "@tencent-weixin/openclaw-weixin@2.0.1",
+        "integrity": "sha512-Ib7onvLU8a1ox9craMZxPwrN+ffJQJbToZzeMwoYryBOMIoBlVY0oCuQF7BZvZ7GRQQKOSSAdxvFkO47hKu0rg==",
+        "shasum": "06339fdc83226454e1286221889fd62c76ae2463",
+        "resolvedAt": "2026-03-25T08:30:23.670Z",
+        "installedAt": "2026-03-25T08:31:38.465Z"
+      },
+      "memos-cloud-openclaw-plugin": {
+        "source": "npm",
+        "spec": "@memtensor/memos-cloud-openclaw-plugin@latest",
+        "installPath": "/workspace/projects/extensions/memos-cloud-openclaw-plugin",
+        "version": "0.1.10",
+        "resolvedName": "@memtensor/memos-cloud-openclaw-plugin",
+        "resolvedVersion": "0.1.10",
+        "resolvedSpec": "@memtensor/memos-cloud-openclaw-plugin@0.1.10",
+        "integrity": "sha512-n0u198vW2t9QkbG5I8N9MGAWrBTAv60wdNz8sL49z5Crbgr2Y5iwz0PVBvWz2+LEfJRt/Cb5Iw1GSp0lv2mqDw==",
+        "shasum": "b94dfa64c12fb015197c39d07a3ed82299c1182a",
+        "resolvedAt": "2026-03-25T11:14:37.960Z",
+        "installedAt": "2026-03-25T11:14:38.386Z"
+      },
+      "coze-openclaw-plugin": {
+        "source": "npm",
+        "spec": "coze-openclaw-plugin",
+        "installPath": "/workspace/projects/extensions/coze-openclaw-plugin",
+        "version": "0.1.15",
+        "resolvedName": "coze-openclaw-plugin",
+        "resolvedVersion": "0.1.15",
+        "resolvedSpec": "coze-openclaw-plugin@0.1.15",
+        "integrity": "sha512-kOXnq3Dt/aZh6GstdBJeDt3FNOWzg7g63IdGGzjuYi+4LSsvgmRBa1PLhbZvnJs851gF3ULltk2Gv+at4gbpjw==",
+        "shasum": "a3f71cc988b173e42bdd98500abfd46389ad23a9",
+        "resolvedAt": "2026-03-26T08:41:17.608Z",
+        "installedAt": "2026-03-26T08:41:32.901Z"
       }
     }
   }

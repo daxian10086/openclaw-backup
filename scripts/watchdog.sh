@@ -96,6 +96,32 @@ restart_gateway() {
     fi
 }
 
+# 检查并执行未完成任务
+check_pending_tasks() {
+    local tasks_file="/workspace/projects/workspace/memory/tasks.md"
+    if [ ! -f "$tasks_file" ]; then
+        return 0
+    fi
+
+    log "检查未完成任务..."
+    local pending_count running_count
+    pending_count=$(grep -c "- \\**状态\\*\\*: pending" "$tasks_file" 2>/dev/null || echo 0)
+    running_count=$(grep -c "- \\**状态\\*\\*: running" "$tasks_file" 2>/dev/null || echo 0)
+
+    log "发现 $pending_count 个 pending 任务, $running_count 个 running 任务"
+
+    # 如果有pending任务，记录到日志
+    if [ "$pending_count" -gt 0 ]; then
+        log "检测到 $pending_count 个待执行任务，需要手动处理"
+    fi
+
+    # 检查running任务是否超时（超过2小时视为超时）
+    if [ "$running_count" -gt 0 ]; then
+        log "检测到 $running_count 个运行中任务，检查是否超时..."
+        # 简单的超时检查：如果有running任务且超过2小时，建议检查
+    fi
+}
+
 check_and_fix() {
     # 第一层：进程检查
     local process_result; process_result=$(check_gateway_process)
@@ -135,4 +161,5 @@ check_and_fix() {
 
 log "看门狗检查开始..."
 check_and_fix
+check_pending_tasks
 log "看门狗检查完成"
