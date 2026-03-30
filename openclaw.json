@@ -23,6 +23,53 @@
   },
   "models": {
     "providers": {
+      "minimax": {
+        "baseUrl": "https://api.minimax.chat/v1",
+        "apiKey": "sk-api-etipui_0pnnRCgsiu5Gi3ArRVt5ISDBQLuh4wB7DwTEXotoX6aZRe0c4iBQQ1mBDcnk_FXXxL6yxMMRiHibZVf-H4VFCkdSr7K7VLW-0or0OlAXthktPzAo",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "MiniMax-Text-01",
+            "name": "MiniMax Text 01",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "abab6.5s-chat",
+            "name": "MiniMax 6.5s",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "abab6.5g-chat",
+            "name": "MiniMax 6.5g",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "abab6.5t-chat",
+            "name": "MiniMax 6.5t",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      },
       "coze": {
         "baseUrl": "${COZE_INTEGRATION_MODEL_BASE_URL}",
         "apiKey": "${COZE_WORKLOAD_IDENTITY_API_KEY}",
@@ -176,7 +223,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "coze/auto"
+        "primary": "minimax/MiniMax-Text-01"
       },
       "imageModel": {
         "primary": "coze/doubao-seed-1-8-251228"
