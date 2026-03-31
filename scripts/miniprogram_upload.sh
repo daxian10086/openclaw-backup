@@ -26,9 +26,9 @@ fi
 
 echo "✅ 项目目录检查通过" | tee -a ${LOG_FILE}
 
-# 2. 获取当前版本（使用version字段而非versionName）
+# 2. 获取当前版本
 if [ -f "${VERSION_FILE}" ]; then
-    VERSION=$(grep '"version"' ${VERSION_FILE} | head -1 | awk -F'"' '{print $4}')
+    VERSION=$(grep '"versionName"' ${VERSION_FILE} | awk -F'"' '{print $4}')
     echo "📦 当前版本：${VERSION}" | tee -a ${LOG_FILE}
 else
     echo "⚠️  警告：未找到版本配置文件" | tee -a ${LOG_FILE}
