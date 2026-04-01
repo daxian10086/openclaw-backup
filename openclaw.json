@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.23-2",
-    "lastTouchedAt": "2026-04-01T09:40:43.936Z"
+    "lastTouchedAt": "2026-04-01T09:57:15.055Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-24T14:34:14.538Z",
@@ -24,14 +24,14 @@
   "models": {
     "providers": {
       "minimax": {
-        "baseUrl": "https://api.minimax.chat/v1",
+        "baseUrl": "https://api.minimaxi.com/anthropic",
         "apiKey": "sk-cp-KAoFdk-YwOAOW63L4Mu5sqUb3344xDU-8mN861UXnk66EB79h63WKgZvPyZt7YJm5Z2gYkn8X5jOddFXj697w3OHej2D1ZznHiPkq3JaPYqOphOGZ5o6vrk",
-        "api": "openai-completions",
+        "api": "anthropic-messages",
         "models": [
           {
-            "id": "MiniMax-M2-07-Omni-Preview",
-            "name": "MiniMax M2.7 Omni",
-            "api": "openai-completions",
+            "id": "M2.7-highspeed",
+            "name": "MiniMax M2.7 Highspeed",
+            "api": "anthropic-messages",
             "reasoning": true,
             "input": [
               "text"
@@ -42,8 +42,8 @@
               "cacheRead": 0,
               "cacheWrite": 0
             },
-            "contextWindow": 262144,
-            "maxTokens": 16384
+            "contextWindow": 204800,
+            "maxTokens": 131072
           }
         ]
       },
@@ -200,7 +200,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "minimax/MiniMax-M2-07-Omni-Preview"
+        "primary": "minimax/M2.7-highspeed"
       },
       "imageModel": {
         "primary": "coze/doubao-seed-1-8-251228"
