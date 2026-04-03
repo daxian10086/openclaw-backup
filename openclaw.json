@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.23-2",
-    "lastTouchedAt": "2026-04-03T10:50:21.729Z"
+    "lastTouchedAt": "2026-04-03T11:26:27.764Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-24T14:34:14.538Z",
@@ -211,7 +211,7 @@
       "workspace": "/workspace/projects/workspace",
       "bootstrapMaxChars": 10000,
       "bootstrapTotalMaxChars": 25000,
-      "contextTokens": 128000,
+      "contextTokens": 838860,
       "memorySearch": {
         "enabled": true,
         "sources": [
@@ -257,13 +257,13 @@
       },
       "contextPruning": {
         "mode": "cache-ttl",
-        "ttl": "1h"
+        "ttl": "10m"
       },
       "compaction": {
         "mode": "safeguard",
         "memoryFlush": {
           "enabled": true,
-          "softThresholdTokens": 2000,
+          "softThresholdTokens": 400000,
           "forceFlushTranscriptBytes": 2097152
         }
       },
