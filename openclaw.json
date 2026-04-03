@@ -23,6 +23,30 @@
   },
   "models": {
     "providers": {
+      "xiaomi": {
+        "baseUrl": "https://api.xiaomimimo.com/v1",
+        "apiKey": "sk-cjg6p2leui999ko2ssx13dz3mw98hysmdhc1zxfhdaox0unk",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "mimo-v2-pro",
+            "name": "MiMo V2 Pro",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      },
       "minimax": {
         "baseUrl": "https://api.minimaxi.com/anthropic",
         "apiKey": "sk-cp-KAoFdk-YwOAOW63L4Mu5sqUb3344xDU-8mN861UXnk66EB79h63WKgZvPyZt7YJm5Z2gYkn8X5jOddFXj697w3OHej2D1ZznHiPkq3JaPYqOphOGZ5o6vrk",
