@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.23-2",
-    "lastTouchedAt": "2026-04-03T11:26:27.764Z"
+    "lastTouchedAt": "2026-04-03T19:26:51.473Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-24T14:34:14.538Z",
@@ -54,7 +54,7 @@
         "models": [
           {
             "id": "auto",
-            "name": "\u81ea\u52a8",
+            "name": "自动",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -123,7 +123,7 @@
           },
           {
             "id": "doubao-seed-1-8-251228",
-            "name": "\u8c46\u5305 1.8",
+            "name": "豆包 1.8",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -141,7 +141,7 @@
           },
           {
             "id": "doubao-seed-2-0-pro-260215",
-            "name": "\u8c46\u5305 2.0 Pro",
+            "name": "豆包 2.0 Pro",
             "api": "openai-completions",
             "reasoning": true,
             "input": [
@@ -159,7 +159,7 @@
           },
           {
             "id": "doubao-seed-2-0-lite-260215",
-            "name": "\u8c46\u5305 2.0 Lite",
+            "name": "豆包 2.0 Lite",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -177,7 +177,7 @@
           },
           {
             "id": "doubao-seed-2-0-mini-260215",
-            "name": "\u8c46\u5305 2.0 Mini",
+            "name": "豆包 2.0 Mini",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -525,14 +525,14 @@
         "source": "npm",
         "spec": "@memtensor/memos-cloud-openclaw-plugin@latest",
         "installPath": "/workspace/projects/extensions/memos-cloud-openclaw-plugin",
-        "version": "0.1.10",
+        "version": "0.1.12",
         "resolvedName": "@memtensor/memos-cloud-openclaw-plugin",
-        "resolvedVersion": "0.1.10",
-        "resolvedSpec": "@memtensor/memos-cloud-openclaw-plugin@0.1.10",
-        "integrity": "sha512-n0u198vW2t9QkbG5I8N9MGAWrBTAv60wdNz8sL49z5Crbgr2Y5iwz0PVBvWz2+LEfJRt/Cb5Iw1GSp0lv2mqDw==",
-        "shasum": "b94dfa64c12fb015197c39d07a3ed82299c1182a",
-        "resolvedAt": "2026-03-25T11:14:37.960Z",
-        "installedAt": "2026-03-25T11:14:38.386Z"
+        "resolvedVersion": "0.1.12",
+        "resolvedSpec": "@memtensor/memos-cloud-openclaw-plugin@0.1.12",
+        "integrity": "sha512-+L6qIHkJGgxjdsTwlCm9fnegIAXNvP1EcNFCaEnPmwVyoS/YgctevboeuCeM/KAmcDCEJhbkSUxAWrqVE9VC7A==",
+        "shasum": "3ce9e1d9c65a6a0f3ecdc39da601493a26cdc881",
+        "resolvedAt": "2026-04-03T19:26:47.954Z",
+        "installedAt": "2026-04-03T19:26:51.358Z"
       },
       "coze-openclaw-plugin": {
         "source": "npm",
