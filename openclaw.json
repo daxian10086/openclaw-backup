@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.23-2",
-    "lastTouchedAt": "2026-04-03T19:26:51.473Z"
+    "lastTouchedAt": "2026-04-01T09:57:15.055Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-24T14:34:14.538Z",
@@ -23,16 +23,16 @@
   },
   "models": {
     "providers": {
-      "xiaomi": {
-        "baseUrl": "https://token-plan-cn.xiaomimimo.com/v1",
-        "apiKey": "tp-c011468r8rzdvcumvmx7dwfuqvlvz70g32qz5co57lkxzkdb",
-        "api": "openai-completions",
+      "minimax": {
+        "baseUrl": "https://api.minimaxi.com/anthropic",
+        "apiKey": "sk-cp-KAoFdk-YwOAOW63L4Mu5sqUb3344xDU-8mN861UXnk66EB79h63WKgZvPyZt7YJm5Z2gYkn8X5jOddFXj697w3OHej2D1ZznHiPkq3JaPYqOphOGZ5o6vrk",
+        "api": "anthropic-messages",
         "models": [
           {
-            "id": "mimo-v2-pro",
-            "name": "MiMo V2 Pro",
-            "api": "openai-completions",
-            "reasoning": false,
+            "id": "M2.7-highspeed",
+            "name": "MiniMax M2.7 Highspeed",
+            "api": "anthropic-messages",
+            "reasoning": true,
             "input": [
               "text"
             ],
@@ -42,8 +42,8 @@
               "cacheRead": 0,
               "cacheWrite": 0
             },
-            "contextWindow": 128000,
-            "maxTokens": 8192
+            "contextWindow": 204800,
+            "maxTokens": 131072
           }
         ]
       },
@@ -200,7 +200,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "xiaomi/mimo-v2-pro"
+        "primary": "minimax/M2.7-highspeed"
       },
       "imageModel": {
         "primary": "coze/doubao-seed-1-8-251228"
@@ -211,7 +211,7 @@
       "workspace": "/workspace/projects/workspace",
       "bootstrapMaxChars": 10000,
       "bootstrapTotalMaxChars": 25000,
-      "contextTokens": 838860,
+      "contextTokens": 128000,
       "memorySearch": {
         "enabled": true,
         "sources": [
@@ -257,10 +257,15 @@
       },
       "contextPruning": {
         "mode": "cache-ttl",
-        "ttl": "10m"
+        "ttl": "1h"
       },
       "compaction": {
-        "mode": "safeguard"
+        "mode": "safeguard",
+        "memoryFlush": {
+          "enabled": true,
+          "softThresholdTokens": 2000,
+          "forceFlushTranscriptBytes": 2097152
+        }
       },
       "thinkingDefault": "medium",
       "blockStreamingDefault": "on",
@@ -525,14 +530,14 @@
         "source": "npm",
         "spec": "@memtensor/memos-cloud-openclaw-plugin@latest",
         "installPath": "/workspace/projects/extensions/memos-cloud-openclaw-plugin",
-        "version": "0.1.12",
+        "version": "0.1.10",
         "resolvedName": "@memtensor/memos-cloud-openclaw-plugin",
-        "resolvedVersion": "0.1.12",
-        "resolvedSpec": "@memtensor/memos-cloud-openclaw-plugin@0.1.12",
-        "integrity": "sha512-+L6qIHkJGgxjdsTwlCm9fnegIAXNvP1EcNFCaEnPmwVyoS/YgctevboeuCeM/KAmcDCEJhbkSUxAWrqVE9VC7A==",
-        "shasum": "3ce9e1d9c65a6a0f3ecdc39da601493a26cdc881",
-        "resolvedAt": "2026-04-03T19:26:47.954Z",
-        "installedAt": "2026-04-03T19:26:51.358Z"
+        "resolvedVersion": "0.1.10",
+        "resolvedSpec": "@memtensor/memos-cloud-openclaw-plugin@0.1.10",
+        "integrity": "sha512-n0u198vW2t9QkbG5I8N9MGAWrBTAv60wdNz8sL49z5Crbgr2Y5iwz0PVBvWz2+LEfJRt/Cb5Iw1GSp0lv2mqDw==",
+        "shasum": "b94dfa64c12fb015197c39d07a3ed82299c1182a",
+        "resolvedAt": "2026-03-25T11:14:37.960Z",
+        "installedAt": "2026-03-25T11:14:38.386Z"
       },
       "coze-openclaw-plugin": {
         "source": "npm",
