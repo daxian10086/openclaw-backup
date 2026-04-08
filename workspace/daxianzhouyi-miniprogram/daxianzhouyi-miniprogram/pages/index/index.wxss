@@ -1,0 +1,371 @@
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  background: #F5F5DC;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48rpx;
+}
+
+.title {
+  font-size: 64rpx;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.subtitle {
+  font-size: 32rpx;
+  color: #666;
+  margin-top: 32rpx;
+}
+
+.shaking-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200rpx;
+  margin-top: 48rpx;
+}
+
+.shaking-img {
+  width: 120rpx;
+  height: 120rpx;
+  /* 优化动画性能 */
+  animation: shake 1.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.shaking-text {
+  font-size: 48rpx;
+  color: #8B4513;
+  font-weight: bold;
+  margin-top: 32rpx;
+}
+
+.shaking-text.active {
+  animation: blink 0.3s ease-in-out infinite;
+  will-change: opacity;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg) translateX(30rpx); }
+  75% { transform: rotate(10deg) translateX(-30rpx); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.cast-btn {
+  margin: 64rpx 32rpx;
+  padding: 32rpx;
+  background: #8B4513;
+  color: white;
+  font-size: 40rpx;
+  border-radius: 16rpx;
+}
+
+.cast-btn[disabled] {
+  opacity: 0.6;
+}
+
+.result {
+  margin-top: 48rpx;
+  padding: 40rpx;
+  background: white;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.hexagram-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.hexagram-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 40rpx;
+}
+
+.hexagram-name .number {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.hexagram-name .name {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.hexagram-name .line {
+  font-size: 40rpx;
+  color: #FF6B6B;
+  font-weight: bold;
+}
+
+.trigrams {
+  margin-top: 40rpx;
+}
+
+.trigram {
+  margin-bottom: 32rpx;
+}
+
+.trigram .label {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.trigram .value {
+  font-size: 48rpx;
+  color: #333;
+  display: block;
+}
+
+.meaning {
+  margin-top: 40rpx;
+}
+
+.meaning .label {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.meaning .value {
+  font-size: 32rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.tabs {
+  display: flex;
+  margin-top: 48rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background: #F5F5DC;
+}
+
+.tab {
+  flex: 1;
+  padding: 24rpx;
+  text-align: center;
+  font-size: 30rpx;
+  background: #F5F5DC;
+  color: #666;
+}
+
+.tab.active {
+  background: #FFECB3;
+  color: #8B4513;
+  font-weight: bold;
+}
+
+.tab-content {
+  margin-top: 32rpx;
+}
+
+.line-item {
+  margin-bottom: 48rpx;
+  padding-bottom: 48rpx;
+  border-bottom: 1rpx solid #EEE;
+}
+
+.line-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #000;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.line-desc {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.selected-line {
+  background: #F0F8FF;
+  padding: 32rpx;
+  border-radius: 16rpx;
+  border: 2rpx solid #8B4513;
+}
+
+.selected-line .content {
+  font-size: 30rpx;
+  color: #5D4037;
+  line-height: 1.8;
+  display: block;
+}
+
+.fortune-card {
+  background: #FAFAFA;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  border: 1rpx solid #DDD;
+  /* 优化渲染性能 */
+  will-change: auto;
+  transform: translateZ(0);
+}
+
+.fortune-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 0;
+  /* 优化点击性能 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fortune-title.collapsed {
+  margin-bottom: 0;
+}
+
+.fortune-title .icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.fortune-title .title-text {
+  flex: 1;
+}
+
+.fortune-content {
+  margin-top: 16rpx;
+  /* 平滑展开 */
+  transition: all 0.2s ease-out;
+}
+
+.fortune-content .content {
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* 运势详解样式 */
+.fortune-detail {
+  background: #FAFAFA;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  border: 1rpx solid #DDD;
+}
+
+.fortune-item {
+  margin-bottom: 32rpx;
+  padding-bottom: 32rpx;
+  border-bottom: 1rpx solid #EEE;
+}
+
+.fortune-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.fortune-label {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8B4513;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.fortune-text {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.6;
+  display: block;
+}
+
+/* 免责声明按钮 */
+.disclaimer-btn {
+  text-align: center;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.disclaimer-text {
+  font-size: 24rpx;
+  color: #999;
+  text-decoration: underline;
+}
+
+/* 免责声明弹窗 */
+.disclaimer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.disclaimer-content {
+  background: white;
+  border-radius: 24rpx;
+  padding: 48rpx;
+  margin: 32rpx;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.disclaimer-header {
+  margin-bottom: 32rpx;
+}
+
+.disclaimer-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8B4513;
+  text-align: center;
+}
+
+.disclaimer-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.disclaimer-body .disclaimer-text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.8;
+  display: block;
+  margin-bottom: 24rpx;
+}
+
+.disclaimer-footer {
+  margin-top: 32rpx;
+}
+
+.disclaimer-close-btn {
+  background: #8B4513;
+  color: white;
+  font-size: 32rpx;
+  padding: 24rpx;
+  border-radius: 12rpx;
+}

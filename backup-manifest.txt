@@ -1,0 +1,18 @@
+OpenClaw 配置备份
+备份时间: 2026-04-08 08:58:17
+版本: 未知
+
+备份内容:
+- 工作区: /workspace/projects/workspace
+- 配置文件: openclaw.json
+- 脚本目录: /workspace/projects/scripts
+
+排除的大文件:
+- *.gguf (Embedding 模型文件)
+- *.bin (二进制文件)
+- *.safetensors (模型文件)
+- node_modules (Node.js 依赖)
+- temp/ (临时文件)
+
+文件清单:
+784

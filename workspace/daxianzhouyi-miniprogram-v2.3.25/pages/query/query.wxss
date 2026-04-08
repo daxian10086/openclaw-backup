@@ -1,0 +1,42 @@
+/* pages/query/query.wxss - 查询页面样式 */
+
+.query-section {
+  background: #F8F8F8;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.input-row {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.input-group {
+  flex: 1;
+}
+
+.input-group .label {
+  font-size: 24rpx;
+  color: #666666;
+  display: block;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+
+.picker {
+  background: #FFFFFF;
+  border: 1rpx solid #E0E0E0;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.result {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}

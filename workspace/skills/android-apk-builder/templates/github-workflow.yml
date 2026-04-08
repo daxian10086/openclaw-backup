@@ -1,0 +1,99 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
+
+    - name: Build Release APK
+      run: ./gradlew assembleRelease
+
+    - name: Upload Debug APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/*.apk
+        retention-days: 7
+
+    - name: Upload Release APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-release
+        path: app/build/outputs/apk/release/*.apk
+        retention-days: 30
+
+    - name: Get APK info
+      run: |
+        echo "## 📦 构建产物" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Debug APK:**" >> $GITHUB_STEP_SUMMARY
+        ls -lh app/build/outputs/apk/debug/ >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Release APK:**" >> $GITHUB_STEP_SUMMARY
+        ls -lh app/build/outputs/apk/release/ >> $GITHUB_STEP_SUMMARY
+
+  build-sign:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Decode keystore
+      if: secrets.KEYSTORE_BASE64 != ''
+      env:
+        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+      run: |
+        echo "$KEYSTORE_BASE64" | base64 -d > app/release.keystore
+
+    - name: Build signed Release APK
+      if: secrets.KEYSTORE_BASE64 != ''
+      env:
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      run: |
+        ./gradlew assembleRelease \
+          -PkeystoreFile=app/release.keystore \
+          -PkeystorePassword=$KEYSTORE_PASSWORD \
+          -PkeyAlias=$KEY_ALIAS \
+          -PkeyPassword=$KEY_PASSWORD
+
+    - name: Upload signed APK
+      if: secrets.KEYSTORE_BASE64 != ''
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-signed-release
+        path: app/build/outputs/apk/release/*.apk
+        retention-days: 90

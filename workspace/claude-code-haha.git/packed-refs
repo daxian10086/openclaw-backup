@@ -1,0 +1,17 @@
+# pack-refs with: peeled fully-peeled sorted 
+919dd34a7aab4ed58b3400d0e7b5ca9574f59acd refs/heads/docs/bilingual-readme-bun-install
+e8f42840a2a8adfef7400c6ef0ec65a7f2e7822f refs/heads/feature/enable-computer-use
+072e5bcc48c56643a5c14c531e141bc7c5ef9243 refs/heads/main
+955c88aae815101861447549c0a4b2ea855961ca refs/pull/11/head
+955c88aae815101861447549c0a4b2ea855961ca refs/pull/12/head
+b0de93206e5da2fccad77de32f90742f572c02d2 refs/pull/12/merge
+b88a334e3579e23bc12215d77ab7cb5ac933fabf refs/pull/2/head
+25d25f8b400bab6257b614aa43a2bf9a076bdbe0 refs/pull/21/head
+2e951fdc8d9ab7986e108608c370c031459fd780 refs/pull/21/merge
+9233518b11a8ad9bd2d5abf7a810f3a76a5ed0f1 refs/pull/27/head
+919dd34a7aab4ed58b3400d0e7b5ca9574f59acd refs/pull/3/head
+e8f42840a2a8adfef7400c6ef0ec65a7f2e7822f refs/pull/35/head
+c81decb9b9957c449f2c238ce56f79720e68c006 refs/pull/37/head
+d8efbb7352888bbebeaf94958b4400c1186f0872 refs/pull/7/head
+f8a1b8ebed5d66eefb58bd238906dc652f5c67f6 refs/pull/7/merge
+218a89e04ad9b3b9933f708a71b495f9d4120dd8 refs/pull/8/head

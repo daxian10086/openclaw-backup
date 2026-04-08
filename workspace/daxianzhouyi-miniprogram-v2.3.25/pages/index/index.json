@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "晋易小典",
+  "usingComponents": {
+    "shared-result": "/components/shared-result/index"
+  }
+}

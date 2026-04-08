@@ -1,0 +1,18 @@
+/* 调试按钮样式 */
+.debug-toggle {
+  text-align: center;
+  margin: 16rpx 32rpx;
+  padding: 12rpx;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 12rpx;
+}
+
+.debug-toggle-text {
+  font-size: 24rpx;
+  color: #8B4513;
+  opacity: 0.8;
+}
+
+.debug-toggle:active {
+  background: rgba(76, 175, 80, 0.2);
+}

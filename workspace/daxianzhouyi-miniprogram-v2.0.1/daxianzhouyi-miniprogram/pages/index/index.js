@@ -1,0 +1,361 @@
+// miniprogram/pages/index/index.js
+const hexagramsData1 = require('../../data/hexagrams.js');
+const hexagramsData2 = require('../../data/hexagrams31-64.js');
+const hexagramsData = [...hexagramsData1, ...hexagramsData2];
+const hexagramFortunes = require('../../data/hexagramFortunes.js');
+
+Page({
+  data: {
+    isAnimating: false,
+    hexagram: null,
+    currentTab: 0,
+    fortuneAnalysis: null,
+    showDisclaimerModal: false,
+    shakingClass: '',
+    showShakeHint: false,
+    isListening: false,
+    isShaking: false, // 是否正在摇动
+    shakeStatusText: '摇动手机开始算卦' // 摇动状态提示文字
+  },
+
+  // 摇一摇检测变量
+  lastX: null,
+  lastY: null,
+  lastZ: null,
+  lastShakeTime: 0,
+  shakeStartTime: null, // 摇动开始时间
+  shakeThreshold: 0.8, // 加速度变化阈值（m/s²）
+  stopShakeDelay: 800, // 停止摇动的检测延迟（毫秒）- 800ms内没有摇动视为停止
+  isVibrating: false, // 是否正在震动
+
+  // 切换选项卡
+  switchTab(e) {
+    let index = e.currentTarget.dataset.index;
+    if (typeof index === 'string') {
+      index = parseInt(index, 10);
+    }
+    if (isNaN(index) || index < 0 || index > 2) {
+      return;
+    }
+    this.setData({ currentTab: index });
+  },
+
+  // 开始持续震动
+  startVibration() {
+    if (this.isVibrating) return;
+    this.isVibrating = true;
+
+    // 立即震动一次（强震动）
+    wx.vibrateShort({ type: 'heavy' });
+
+    // 每120ms震动一次，使用强震动，实现更明显的持续震动效果
+    this._vibrationTimer = setInterval(() => {
+      if (this.isVibrating) {
+        wx.vibrateShort({ type: 'heavy' });
+      }
+    }, 120);
+  },
+
+  // 停止震动
+  stopVibration() {
+    this.isVibrating = false;
+    if (this._vibrationTimer) {
+      clearInterval(this._vibrationTimer);
+      this._vibrationTimer = null;
+    }
+  },
+
+  // 单次震动（用于显示结果）
+  singleVibrate() {
+    wx.vibrateLong();
+  },
+
+  // 监听加速度变化（摇一摇检测）
+  handleAccelerometerChange(res) {
+    const { x, y, z } = res;
+
+    // 首次初始化
+    if (this.lastX === null) {
+      this.lastX = x;
+      this.lastY = y;
+      this.lastZ = z;
+      return;
+    }
+
+    // 计算加速度变化量
+    const deltaX = Math.abs(x - this.lastX);
+    const deltaY = Math.abs(y - this.lastY);
+    const deltaZ = Math.abs(z - this.lastZ);
+
+    // 保存当前值
+    this.lastX = x;
+    this.lastY = y;
+    this.lastZ = z;
+
+    // 计算总加速度变化
+    const acceleration = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+
+    const now = Date.now();
+
+    // 检测是否正在摇动
+    if (acceleration > this.shakeThreshold) {
+      // 检测到摇动
+      this.lastShakeTime = now;
+
+      // 如果是第一次摇动，记录开始时间并更新状态
+      if (!this.data.isShaking) {
+        console.log('✅ 开始摇动');
+        this.shakeStartTime = now;
+        this.setData({
+          isShaking: true,
+          shakeStatusText: '正在摇卦...',
+          shakingClass: 'active'
+        });
+        // 开始持续震动
+        this.startVibration();
+      }
+
+      // 清除停止检测定时器
+      if (this._stopShakeTimer) {
+        clearTimeout(this._stopShakeTimer);
+        this._stopShakeTimer = null;
+      }
+
+      // 设置新的停止检测定时器
+      this._stopShakeTimer = setTimeout(() => {
+        this.onShakeStopped();
+      }, this.stopShakeDelay);
+    }
+  },
+
+  // 摇动停止后的处理
+  onShakeStopped() {
+    console.log('✅ 停止摇动，开始算卦');
+
+    // 清除定时器
+    if (this._stopShakeTimer) {
+      clearTimeout(this._stopShakeTimer);
+      this._stopShakeTimer = null;
+    }
+
+    // 停止震动
+    this.stopVibration();
+
+    // 停止监听加速度
+    this.stopAccelerometer();
+
+    // 更新状态：显示"算卦中..."
+    this.setData({
+      isShaking: false,
+      showShakeHint: false,
+      isAnimating: true,
+      shakeStatusText: '算卦中...'
+    });
+
+    // 2秒后显示算卦结果
+    setTimeout(() => {
+      this.performCastHexagram();
+    }, 2000);
+  },
+
+  // 开始监听加速度
+  startAccelerometer() {
+    // 保存绑定后的函数引用
+    if (!this._boundHandleAccelerometerChange) {
+      this._boundHandleAccelerometerChange = this.handleAccelerometerChange.bind(this);
+    }
+
+    // 重置变量
+    this.lastX = null;
+    this.lastY = null;
+    this.lastZ = null;
+    this.lastShakeTime = 0;
+    this.shakeStartTime = null;
+
+    wx.startAccelerometer({
+      interval: 'game',
+      success: () => {
+        console.log('✅ 加速度监听已启动');
+        wx.onAccelerometerChange(this._boundHandleAccelerometerChange);
+        this.setData({ isListening: true });
+      },
+      fail: (err) => {
+        console.error('❌ 启动加速度监听失败:', err);
+        // 如果摇一摇不可用，直接开始算卦
+        this.onShakeStopped();
+      }
+    });
+  },
+
+  // 停止监听加速度
+  stopAccelerometer() {
+    if (this._boundHandleAccelerometerChange) {
+      wx.offAccelerometerChange(this._boundHandleAccelerometerChange);
+    }
+    wx.stopAccelerometer({
+      success: () => {
+        console.log('加速度监听已停止');
+        this.setData({ isListening: false });
+      },
+      fail: () => {
+        this.setData({ isListening: false });
+      }
+    });
+  },
+
+  // 生成运势分析
+  generateFortuneAnalysis(hexagramNumber, lineIndex) {
+    const hexFortuneData = hexagramFortunes[hexagramNumber];
+    const lineFortune = hexFortuneData ? hexFortuneData.lines[lineIndex] : null;
+
+    if (lineFortune) {
+      return {
+        yunshi: lineFortune.运势 || '暂无数据',
+        caiyun: lineFortune.财运 || '暂无数据',
+        jiating: lineFortune.家庭 || '暂无数据',
+        jiankang: lineFortune.健康 || '暂无数据'
+      };
+    }
+
+    return {
+      yunshi: '暂无数据',
+      caiyun: '暂无数据',
+      jiating: '暂无数据',
+      jiankang: '暂无数据'
+    };
+  },
+
+  // 算卦 - 点击按钮触发
+  castHexagram() {
+    if (this.data.isAnimating || this.data.showShakeHint || this.data.isShaking) return;
+
+    // 显示"摇动手机开始算卦"提示
+    this.setData({
+      showShakeHint: true,
+      shakeStatusText: '摇动手机开始算卦',
+      isShaking: false
+    });
+
+    // 开始监听摇动
+    this.startAccelerometer();
+
+    // 8秒后如果还没摇动，自动开始
+    this._shakeTimeout = setTimeout(() => {
+      if (this.data.showShakeHint && !this.data.isShaking && !this.data.isAnimating) {
+        console.log('8秒内未检测到摇动，自动开始算卦');
+        this.onShakeStopped();
+      }
+    }, 8000);
+  },
+
+  // 执行算卦逻辑
+  performCastHexagram() {
+    try {
+      if (!hexagramsData || hexagramsData.length === 0) {
+        throw new Error('卦象数据未加载');
+      }
+
+      const randomIndex = Math.floor(Math.random() * hexagramsData.length);
+      const hexagram = hexagramsData[randomIndex];
+
+      if (!hexagram || !hexagram.lines || hexagram.lines.length < 6) {
+        throw new Error('卦象数据异常');
+      }
+
+      const lineIndex = Math.floor(Math.random() * 6);
+      const selectedLineName = ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][lineIndex];
+      const selectedLine = hexagram.lines[lineIndex];
+
+      if (!selectedLine) {
+        throw new Error('选择的爻位不存在');
+      }
+
+      const fortuneAnalysis = this.generateFortuneAnalysis(hexagram.number, lineIndex);
+
+      this.setData({
+        isAnimating: false,
+        shakingClass: '',
+        hexagram: {
+          ...hexagram,
+          selectedLineName,
+          selectedLineText: selectedLine.text,
+          selectedLineDesc: selectedLine.desc
+        },
+        currentTab: 0,
+        fortuneAnalysis: fortuneAnalysis,
+        shakeStatusText: '摇动手机开始算卦'
+      });
+
+      // 显示结果时震动一次
+      this.singleVibrate();
+
+      wx.nextTick(() => {
+        wx.pageScrollTo({
+          scrollTop: 9999,
+          duration: 300
+        });
+      });
+
+    } catch (error) {
+      console.error('算卦出错:', error);
+      this.setData({
+        isAnimating: false,
+        shakingClass: '',
+        hexagram: null,
+        fortuneAnalysis: null,
+        shakeStatusText: '摇动手机开始算卦'
+      });
+      wx.showToast({
+        title: '算卦出错，请重试',
+        icon: 'none'
+      });
+    }
+  },
+
+  // 页面加载
+  onLoad() {
+    const hasReadDisclaimer = wx.getStorageSync('hasReadDisclaimer');
+    if (!hasReadDisclaimer) {
+      this.setData({ showDisclaimerModal: true });
+    }
+  },
+
+  // 页面卸载时停止监听加速度
+  onUnload() {
+    if (this._shakeTimeout) {
+      clearTimeout(this._shakeTimeout);
+      this._shakeTimeout = null;
+    }
+    if (this._stopShakeTimer) {
+      clearTimeout(this._stopShakeTimer);
+      this._stopShakeTimer = null;
+    }
+    this.stopVibration();
+    this.stopAccelerometer();
+  },
+
+  // 页面隐藏时停止监听加速度
+  onHide() {
+    if (this._shakeTimeout) {
+      clearTimeout(this._shakeTimeout);
+      this._shakeTimeout = null;
+    }
+    if (this._stopShakeTimer) {
+      clearTimeout(this._stopShakeTimer);
+      this._stopShakeTimer = null;
+    }
+    this.stopVibration();
+    this.stopAccelerometer();
+  },
+
+  // 显示免责声明
+  showDisclaimer() {
+    this.setData({ showDisclaimerModal: true });
+  },
+
+  // 隐藏免责声明
+  hideDisclaimer() {
+    this.setData({ showDisclaimerModal: false });
+    wx.setStorageSync('hasReadDisclaimer', true);
+  }
+});
