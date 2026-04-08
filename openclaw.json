@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.23-2",
-    "lastTouchedAt": "2026-04-01T09:57:15.055Z"
+    "lastTouchedVersion": "2026.4.5",
+    "lastTouchedAt": "2026-04-08T08:57:26.039Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-24T14:34:14.538Z",
@@ -461,7 +461,9 @@
     "allow": [
       "openclaw-weixin",
       "memos-cloud-openclaw-plugin",
-      "coze-openclaw-plugin"
+      "coze-openclaw-plugin",
+      "minimax",
+      "browser"
     ],
     "entries": {
       "feishu": {
@@ -484,6 +486,12 @@
         "config": {
           "apiKey": "${COZE_WORKLOAD_IDENTITY_API_KEY}"
         }
+      },
+      "minimax": {
+        "enabled": true
+      },
+      "browser": {
+        "enabled": true
       }
     },
     "installs": {
