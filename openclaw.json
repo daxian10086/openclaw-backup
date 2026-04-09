@@ -304,6 +304,9 @@
       "entries": {
         "session-memory": {
           "messages": 30
+        },
+        "self-improvement": {
+          "enabled": true
         }
       }
     }
