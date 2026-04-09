@@ -306,7 +306,8 @@
           "messages": 30
         },
         "self-improvement": {
-          "enabled": true
+          "enabled": true,
+          "priority": 10
         }
       }
     }
