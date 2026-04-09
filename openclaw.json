@@ -213,7 +213,7 @@
       "bootstrapTotalMaxChars": 25000,
       "contextTokens": 128000,
       "memorySearch": {
-        "enabled": true,
+        "enabled": false,
         "sources": [
           "memory",
           "sessions"
@@ -479,7 +479,7 @@
         "enabled": true
       },
       "memos-cloud-openclaw-plugin": {
-        "enabled": true
+        "enabled": false
       },
       "coze-openclaw-plugin": {
         "enabled": true,
