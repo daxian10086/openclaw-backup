@@ -209,8 +209,8 @@
         "primary": "google/gemini-3-pro-image-preview"
       },
       "workspace": "/workspace/projects/workspace",
-      "bootstrapMaxChars": 10000,
-      "bootstrapTotalMaxChars": 25000,
+      "bootstrapMaxChars": 50000,
+      "bootstrapTotalMaxChars": 100000,
       "contextTokens": 128000,
       "memorySearch": {
         "enabled": false,
@@ -276,7 +276,8 @@
       "maxConcurrent": 4,
       "subagents": {
         "maxConcurrent": 8
-      }
+      },
+      "timeoutSeconds": 120
     }
   },
   "tools": {
