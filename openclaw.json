@@ -263,8 +263,8 @@
         "mode": "safeguard",
         "memoryFlush": {
           "enabled": true,
-          "softThresholdTokens": 2000,
-          "forceFlushTranscriptBytes": 2097152
+          "softThresholdTokens": 5000,
+          "forceFlushTranscriptBytes": 5242880
         }
       },
       "thinkingDefault": "medium",
