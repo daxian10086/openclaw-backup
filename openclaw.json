@@ -200,7 +200,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "coze/auto"
+        "primary": "minimax/M2.7-highspeed"
       },
       "imageModel": {
         "primary": "coze/doubao-seed-1-8-251228"
@@ -455,9 +455,6 @@
       },
       "wacli": {
         "enabled": false
-      },
-      "self-improving-agent": {
-        "enabled": true
       }
     }
   },
