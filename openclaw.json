@@ -267,7 +267,7 @@
           "forceFlushTranscriptBytes": 5242880
         }
       },
-      "thinkingDefault": "medium",
+      "thinkingDefault": "high",
       "blockStreamingDefault": "on",
       "blockStreamingBreak": "message_end",
       "heartbeat": {
@@ -277,17 +277,7 @@
       "subagents": {
         "maxConcurrent": 8
       },
-      "timeoutSeconds": 300
-    }
-  },
-  "tools": {
-    "web": {
-      "search": {
-        "enabled": false
-      },
-      "fetch": {
-        "enabled": false
-      }
+      "timeoutSeconds": 120
     }
   },
   "messages": {
