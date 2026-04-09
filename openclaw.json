@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.4.5",
-    "lastTouchedAt": "2026-04-08T08:57:26.039Z"
+    "lastTouchedVersion": "2026.4.9",
+    "lastTouchedAt": "2026-04-09T16:16:03.444Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-24T14:34:14.538Z",
@@ -54,7 +54,7 @@
         "models": [
           {
             "id": "auto",
-            "name": "\u81ea\u52a8",
+            "name": "自动",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -123,7 +123,7 @@
           },
           {
             "id": "doubao-seed-1-8-251228",
-            "name": "\u8c46\u5305 1.8",
+            "name": "豆包 1.8",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -141,7 +141,7 @@
           },
           {
             "id": "doubao-seed-2-0-pro-260215",
-            "name": "\u8c46\u5305 2.0 Pro",
+            "name": "豆包 2.0 Pro",
             "api": "openai-completions",
             "reasoning": true,
             "input": [
@@ -159,7 +159,7 @@
           },
           {
             "id": "doubao-seed-2-0-lite-260215",
-            "name": "\u8c46\u5305 2.0 Lite",
+            "name": "豆包 2.0 Lite",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -177,7 +177,7 @@
           },
           {
             "id": "doubao-seed-2-0-mini-260215",
-            "name": "\u8c46\u5305 2.0 Mini",
+            "name": "豆包 2.0 Mini",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -269,7 +269,7 @@
       },
       "thinkingDefault": "high",
       "blockStreamingDefault": "on",
-      "blockStreamingBreak": "message_end",
+      "blockStreamingBreak": "text_end",
       "heartbeat": {
         "lightContext": true
       },
@@ -277,7 +277,11 @@
       "subagents": {
         "maxConcurrent": 8
       },
-      "timeoutSeconds": 120
+      "timeoutSeconds": 3600,
+      "blockStreamingChunk": {
+        "minChars": 800,
+        "maxChars": 1200
+      }
     }
   },
   "messages": {
@@ -304,7 +308,6 @@
   },
   "channels": {
     "feishu": {
-      "blockStreaming": true,
       "allowFrom": [
         "ou_ecc5f6e32e1fce5bb204da93e7bf23ce"
       ],
@@ -313,14 +316,13 @@
       "connectionMode": "websocket",
       "dmPolicy": "allowlist",
       "domain": "feishu",
-      "enabled": false,
+      "enabled": true,
       "groupAllowFrom": [],
       "groupPolicy": "allowlist",
-      "requireMention": true,
-      "streaming": true
+      "requireMention": true
     },
     "openclaw-weixin": {
-      "accounts": {}
+      "blockStreaming": true
     }
   },
   "gateway": {
@@ -455,6 +457,7 @@
   "plugins": {
     "allow": [
       "openclaw-weixin",
+      "feishu",
       "memos-cloud-openclaw-plugin",
       "coze-openclaw-plugin",
       "minimax",
@@ -462,7 +465,7 @@
     ],
     "entries": {
       "feishu": {
-        "enabled": false
+        "enabled": true
       },
       "wecom": {
         "enabled": false
