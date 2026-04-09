@@ -54,7 +54,7 @@
         "models": [
           {
             "id": "auto",
-            "name": "自动",
+            "name": "\u81ea\u52a8",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -123,7 +123,7 @@
           },
           {
             "id": "doubao-seed-1-8-251228",
-            "name": "豆包 1.8",
+            "name": "\u8c46\u5305 1.8",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -141,7 +141,7 @@
           },
           {
             "id": "doubao-seed-2-0-pro-260215",
-            "name": "豆包 2.0 Pro",
+            "name": "\u8c46\u5305 2.0 Pro",
             "api": "openai-completions",
             "reasoning": true,
             "input": [
@@ -159,7 +159,7 @@
           },
           {
             "id": "doubao-seed-2-0-lite-260215",
-            "name": "豆包 2.0 Lite",
+            "name": "\u8c46\u5305 2.0 Lite",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -177,7 +177,7 @@
           },
           {
             "id": "doubao-seed-2-0-mini-260215",
-            "name": "豆包 2.0 Mini",
+            "name": "\u8c46\u5305 2.0 Mini",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -559,6 +559,18 @@
         "shasum": "a3f71cc988b173e42bdd98500abfd46389ad23a9",
         "resolvedAt": "2026-03-26T08:41:17.608Z",
         "installedAt": "2026-03-26T08:41:32.901Z"
+      }
+    }
+  },
+  "mcp": {
+    "servers": {
+      "mempalace": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mempalace.mcp_server"
+        ],
+        "env": {}
       }
     }
   }
