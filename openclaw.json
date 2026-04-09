@@ -211,7 +211,7 @@
       "workspace": "/workspace/projects/workspace",
       "bootstrapMaxChars": 50000,
       "bootstrapTotalMaxChars": 100000,
-      "contextTokens": 128000,
+      "contextTokens": 200000,
       "memorySearch": {
         "enabled": false,
         "sources": [
@@ -576,6 +576,17 @@
           "mempalace.mcp_server"
         ],
         "env": {}
+      },
+      "minimax": {
+        "command": "python",
+        "args": [
+          "-c",
+          "from minimax_mcp.server import main; main()"
+        ],
+        "env": {
+          "MINIMAX_API_KEY": "sk-cp-KAoFdk-YwOAOW63L4Mu5sqUb3344xDU-8mN861UXnk66EB79h63WKgZvPyZt7YJm5Z2gYkn8X5jOddFXj697w3OHej2D1ZznHiPkq3JaPYqOphOGZ5o6vrk",
+          "MINIMAX_API_HOST": "https://api.minimaxi.com"
+        }
       }
     }
   }
