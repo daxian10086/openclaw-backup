@@ -1,10 +1,10 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.4.9",
-    "lastTouchedAt": "2026-04-10T14:09:50.607Z"
+    "lastTouchedAt": "2026-04-10T16:14:47.855Z"
   },
   "wizard": {
-    "lastRunAt": "2026-04-10T14:09:50.547Z",
+    "lastRunAt": "2026-04-10T16:07:36.145Z",
     "lastRunVersion": "2026.4.9",
     "lastRunCommand": "doctor",
     "lastRunMode": "local"
@@ -282,7 +282,26 @@
         "minChars": 800,
         "maxChars": 1200
       }
-    }
+    },
+    "list": [
+      {
+        "id": "main"
+      },
+      {
+        "id": "stock",
+        "name": "stock",
+        "workspace": "/workspace/projects/workspace",
+        "agentDir": "/workspace/projects/agents/stock/agent",
+        "model": "minimax/M2.7-highspeed"
+      },
+      {
+        "id": "code",
+        "name": "code",
+        "workspace": "/workspace/projects/workspace",
+        "agentDir": "/workspace/projects/agents/code/agent",
+        "model": "minimax/M2.7-highspeed"
+      }
+    ]
   },
   "messages": {
     "ackReactionScope": "group-mentions"
