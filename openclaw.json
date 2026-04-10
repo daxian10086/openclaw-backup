@@ -285,18 +285,19 @@
     },
     "list": [
       {
-        "id": "main"
+        "id": "main",
+        "name": "主助理"
       },
       {
         "id": "stock",
-        "name": "stock",
+        "name": "股票专家",
         "workspace": "/workspace/projects/workspace",
         "agentDir": "/workspace/projects/agents/stock/agent",
         "model": "minimax/M2.7-highspeed"
       },
       {
         "id": "code",
-        "name": "code",
+        "name": "代码助手",
         "workspace": "/workspace/projects/workspace",
         "agentDir": "/workspace/projects/agents/code/agent",
         "model": "minimax/M2.7-highspeed"
@@ -327,20 +328,32 @@
   },
   "channels": {
     "feishu": {
-      "allowFrom": [
-        "ou_ecc5f6e32e1fce5bb204da93e7bf23ce"
-      ],
-      "appId": "cli_a938ad2f9ff95ceb",
-      "appSecret": "WBJyVArkov7mDXPFewz86dBAy8r4LcAa",
-      "connectionMode": "websocket",
-      "dmPolicy": "allowlist",
-      "domain": "feishu",
       "enabled": true,
-      "groupAllowFrom": [
-        "oc_023ff84519aac218088d4fe98c9a7584"
-      ],
+      "connectionMode": "websocket",
+      "domain": "feishu",
+      "dmPolicy": "allowlist",
       "groupPolicy": "allowlist",
-      "requireMention": true
+      "requireMention": true,
+      "accounts": {
+        "main": {
+          "appId": "cli_a938ad2f9ff95ceb",
+          "appSecret": "WBJyVArkov7mDXPFewz86dBAy8r4LcAa",
+          "allowFrom": [
+            "ou_ecc5f6e32e1fce5bb204da93e7bf23ce"
+          ],
+          "groupAllowFrom": [
+            "oc_023ff84519aac218088d4fe98c9a7584"
+          ]
+        },
+        "stock": {
+          "appId": "cli_a9520cfa92f9dcb1",
+          "appSecret": "zMgIBayZdVABiURg80WgVck8N7q6fQPw"
+        },
+        "code": {
+          "appId": "cli_a9525a5fdab95cc0",
+          "appSecret": "4qE5di8IyzWrRp7EIedOag1cFZF4ToLI"
+        }
+      }
     },
     "openclaw-weixin": {
       "blockStreaming": true
@@ -587,5 +600,28 @@
         }
       }
     }
-  }
+  },
+  "bindings": [
+    {
+      "agentId": "main",
+      "match": {
+        "channel": "feishu",
+        "accountId": "main"
+      }
+    },
+    {
+      "agentId": "stock",
+      "match": {
+        "channel": "feishu",
+        "accountId": "stock"
+      }
+    },
+    {
+      "agentId": "code",
+      "match": {
+        "channel": "feishu",
+        "accountId": "code"
+      }
+    }
+  ]
 }
