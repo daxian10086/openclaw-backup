@@ -320,7 +320,12 @@
       "groupAllowFrom": [],
       "groupPolicy": "allowlist",
       "requireMention": true,
-      "streaming": true
+      "streaming": true,
+      "blockStreamingCoalesce": {
+        "enabled": true,
+        "minDelayMs": 800,
+        "maxDelayMs": 2500
+      }
     },
     "openclaw-weixin": {
       "blockStreaming": true
