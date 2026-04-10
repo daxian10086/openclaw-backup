@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.4.9",
-    "lastTouchedAt": "2026-04-10T07:35:30.084Z"
+    "lastTouchedAt": "2026-04-09T16:16:03.444Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-24T14:34:14.538Z",
@@ -268,7 +268,7 @@
         }
       },
       "thinkingDefault": "high",
-      "blockStreamingDefault": "off",
+      "blockStreamingDefault": "on",
       "blockStreamingBreak": "text_end",
       "heartbeat": {
         "lightContext": true
@@ -319,22 +319,9 @@
       "enabled": true,
       "groupAllowFrom": [],
       "groupPolicy": "allowlist",
-      "requireMention": true,
-      "streaming": true,
-      "blockStreamingCoalesce": {
-        "enabled": true,
-        "minDelayMs": 500,
-        "maxDelayMs": 1500
-      }
+      "requireMention": true
     },
     "openclaw-weixin": {
-      "blockStreaming": true
-    },
-    "wecom": {
-      "enabled": true,
-      "botId": "aib0c7tfzEHyhipBRdESIHw5BjNBzFh1QNl",
-      "secret": "vb5v5Gwy42aLgNCju9PbtRdnLkg7lUGlmtdhL8y7hbN",
-      "streaming": true,
       "blockStreaming": true
     }
   },
@@ -474,8 +461,7 @@
       "memos-cloud-openclaw-plugin",
       "coze-openclaw-plugin",
       "minimax",
-      "browser",
-      "wecom-openclaw-plugin"
+      "browser"
     ],
     "entries": {
       "feishu": {
@@ -500,9 +486,6 @@
         "enabled": true
       },
       "browser": {
-        "enabled": true
-      },
-      "wecom-openclaw-plugin": {
         "enabled": true
       }
     },
@@ -558,19 +541,6 @@
         "shasum": "a3f71cc988b173e42bdd98500abfd46389ad23a9",
         "resolvedAt": "2026-03-26T08:41:17.608Z",
         "installedAt": "2026-03-26T08:41:32.901Z"
-      },
-      "wecom-openclaw-plugin": {
-        "source": "npm",
-        "spec": "@wecom/wecom-openclaw-plugin@latest",
-        "installPath": "/workspace/projects/extensions/wecom-openclaw-plugin",
-        "version": "2026.4.8",
-        "resolvedName": "@wecom/wecom-openclaw-plugin",
-        "resolvedVersion": "2026.4.8",
-        "resolvedSpec": "@wecom/wecom-openclaw-plugin@2026.4.8",
-        "integrity": "sha512-bGbS8493sHT34FAYaugep2OLjb4dvYfLXMSfZguK/4s8i5PM//2iy4XPUsniacl8LNSUxiF/FuQGM/LJxNwrFg==",
-        "shasum": "f2e8c0346dc274b9586a38b9f51796ee4e75e9c1",
-        "resolvedAt": "2026-04-10T07:10:54.735Z",
-        "installedAt": "2026-04-10T07:11:01.236Z"
       }
     }
   },
@@ -596,10 +566,5 @@
         }
       }
     }
-  },
-  "tools": {
-    "alsoAllow": [
-      "wecom_mcp"
-    ]
   }
 }
