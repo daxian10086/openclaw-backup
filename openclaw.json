@@ -319,7 +319,8 @@
       "enabled": true,
       "groupAllowFrom": [],
       "groupPolicy": "allowlist",
-      "requireMention": true
+      "requireMention": true,
+      "streaming": true
     },
     "openclaw-weixin": {
       "blockStreaming": true
