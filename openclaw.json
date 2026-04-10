@@ -292,14 +292,14 @@
         "id": "stock",
         "name": "股票专家",
         "workspace": "/workspace/projects/workspace",
-        "agentDir": "/workspace/projects/agents/stock/agent",
+        "agentDir": "/workspace/projects/agents/stock",
         "model": "minimax/M2.7-highspeed"
       },
       {
         "id": "code",
         "name": "代码助手",
         "workspace": "/workspace/projects/workspace",
-        "agentDir": "/workspace/projects/agents/code/agent",
+        "agentDir": "/workspace/projects/agents/code",
         "model": "minimax/M2.7-highspeed"
       }
     ]
