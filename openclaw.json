@@ -1,10 +1,10 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.4.9",
-    "lastTouchedAt": "2026-04-10T16:14:47.855Z"
+    "lastTouchedAt": "2026-04-10T17:02:13.053Z"
   },
   "wizard": {
-    "lastRunAt": "2026-04-10T16:07:36.145Z",
+    "lastRunAt": "2026-04-10T17:02:12.992Z",
     "lastRunVersion": "2026.4.9",
     "lastRunCommand": "doctor",
     "lastRunMode": "local"
@@ -331,8 +331,6 @@
       "enabled": true,
       "connectionMode": "websocket",
       "domain": "feishu",
-      "dmPolicy": "allowlist",
-      "groupPolicy": "allowlist",
       "requireMention": true,
       "accounts": {
         "main": {
@@ -352,6 +350,10 @@
         "code": {
           "appId": "cli_a9525a5fdab95cc0",
           "appSecret": "4qE5di8IyzWrRp7EIedOag1cFZF4ToLI"
+        },
+        "default": {
+          "dmPolicy": "allowlist",
+          "groupPolicy": "allowlist"
         }
       }
     },
