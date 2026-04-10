@@ -8,6 +8,14 @@
     "scheduler": {
       "version": "2.0.0",
       "installedAt": 1773924007214
+    },
+    "zopia-skill": {
+      "version": "1.0.1",
+      "installedAt": 1775639381377
+    },
+    "frontend-design-extractor": {
+      "version": "1.0.1",
+      "installedAt": 1775652536951
     }
   }
 }

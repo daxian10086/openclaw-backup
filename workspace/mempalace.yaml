@@ -1,0 +1,54 @@
+wing: workspace
+rooms:
+- name: "\u664B\u6613\u5C0F\u5178\u63A8\u5E7F"
+  description: "Files from \u664B\u6613\u5C0F\u5178\u63A8\u5E7F/"
+- name: zhouyi64
+  description: Files from zhouyi64/
+- name: daxianzhouyi_miniprogram_v2.1.4
+  description: Files from daxianzhouyi-miniprogram-v2.1.4/
+- name: data
+  description: Files from data/
+- name: claude_code_haha.git
+  description: Files from claude-code-haha.git/
+- name: daxianzhouyi_miniprogram
+  description: Files from daxianzhouyi-miniprogram/
+- name: fortune_teller
+  description: Files from fortune-teller/
+- name: wechat_devtools
+  description: Files from wechat_devtools/
+- name: memory
+  description: Files from memory/
+- name: frontend
+  description: Files from pages/
+- name: daxianzhouyi_miniprogram_v2.0.1
+  description: Files from daxianzhouyi-miniprogram-v2.0.1/
+- name: daxianzhouyi_clean
+  description: Files from daxianzhouyi-clean/
+- name: daxianzhouyi_miniprogram_v2.1.3
+  description: Files from daxianzhouyi-miniprogram-v2.1.3/
+- name: daxianzhouyi
+  description: Files from daxianzhouyi/
+- name: temp
+  description: Files from temp/
+- name: skills
+  description: Files from skills/
+- name: daxianzhouyi_final
+  description: Files from daxianzhouyi-final/
+- name: workspace
+  description: Files from workspace/
+- name: scripts
+  description: Files from scripts/
+- name: apk
+  description: Files from apk/
+- name: daxianzhouyi_miniprogram_v2.2.5
+  description: Files from daxianzhouyi-miniprogram-v2.2.5/
+- name: daxianzhouyi_miniprogram_v2.2.7
+  description: Files from daxianzhouyi-miniprogram-v2.2.7/
+- name: design
+  description: Files from assets/
+- name: daxianzhouyi_miniprogram_v2.3.25
+  description: Files from daxianzhouyi-miniprogram-v2.3.25/
+- name: feishu_openclaw_plugin
+  description: Files from feishu-openclaw-plugin/
+- name: general
+  description: Files that don't fit other rooms
