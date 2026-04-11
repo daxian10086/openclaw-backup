@@ -390,7 +390,8 @@
           ],
           "groupAllowFrom": [
             "oc_023ff84519aac218088d4fe98c9a7584"
-          ]
+          ],
+          "dmPolicy": "pairing"
         },
         "stock": {
           "appId": "cli_a9525a5fdab95cc0",
