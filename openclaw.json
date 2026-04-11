@@ -301,7 +301,8 @@
         "subagents": {
           "allowAgents": [
             "stock",
-            "code"
+            "code",
+            "news"
           ]
         }
       },
@@ -327,6 +328,21 @@
         "identity": {
           "name": "\u4ee3\u7801\u52a9\u624b",
           "emoji": "\ud83d\udcbb"
+        },
+        "model": "minimax/M2.7-highspeed",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "news",
+        "name": "资讯",
+        "workspace": "/workspace/projects/agents/news",
+        "identity": {
+          "name": "资讯",
+          "emoji": "📰"
         },
         "model": "minimax/M2.7-highspeed",
         "subagents": {
@@ -383,6 +399,10 @@
         "code": {
           "appId": "cli_a9520cfa92f9dcb1",
           "appSecret": "zMgIBayZdVABiURg80WgVck8N7q6fQPw"
+        },
+        "news": {
+          "appId": "cli_a953187bfe395cd1",
+          "appSecret": "LpgHGBvi2igQD5LWbfX15enz0RO88FzY"
         },
         "default": {
           "dmPolicy": "allowlist",
@@ -656,6 +676,13 @@
       "match": {
         "channel": "feishu",
         "accountId": "code"
+      }
+    },
+    {
+      "agentId": "news",
+      "match": {
+        "channel": "feishu",
+        "accountId": "news"
       }
     }
   ]
