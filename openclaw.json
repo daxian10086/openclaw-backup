@@ -344,12 +344,12 @@
           ]
         },
         "stock": {
-          "appId": "cli_a9520cfa92f9dcb1",
-          "appSecret": "zMgIBayZdVABiURg80WgVck8N7q6fQPw"
-        },
-        "code": {
           "appId": "cli_a9525a5fdab95cc0",
           "appSecret": "4qE5di8IyzWrRp7EIedOag1cFZF4ToLI"
+        },
+        "code": {
+          "appId": "cli_a9520cfa92f9dcb1",
+          "appSecret": "zMgIBayZdVABiURg80WgVck8N7q6fQPw"
         },
         "default": {
           "dmPolicy": "allowlist",
