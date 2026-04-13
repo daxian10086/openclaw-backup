@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.4.9",
-    "lastTouchedAt": "2026-04-10T17:02:13.053Z"
+    "lastTouchedVersion": "2026.4.11",
+    "lastTouchedAt": "2026-04-13T04:57:04.277Z"
   },
   "wizard": {
     "lastRunAt": "2026-04-10T17:02:12.992Z",
@@ -54,7 +54,7 @@
         "models": [
           {
             "id": "auto",
-            "name": "\u81ea\u52a8",
+            "name": "自动",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -123,7 +123,7 @@
           },
           {
             "id": "doubao-seed-1-8-251228",
-            "name": "\u8c46\u5305 1.8",
+            "name": "豆包 1.8",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -141,7 +141,7 @@
           },
           {
             "id": "doubao-seed-2-0-pro-260215",
-            "name": "\u8c46\u5305 2.0 Pro",
+            "name": "豆包 2.0 Pro",
             "api": "openai-completions",
             "reasoning": true,
             "input": [
@@ -159,7 +159,7 @@
           },
           {
             "id": "doubao-seed-2-0-lite-260215",
-            "name": "\u8c46\u5305 2.0 Lite",
+            "name": "豆包 2.0 Lite",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -177,7 +177,7 @@
           },
           {
             "id": "doubao-seed-2-0-mini-260215",
-            "name": "\u8c46\u5305 2.0 Mini",
+            "name": "豆包 2.0 Mini",
             "api": "openai-completions",
             "reasoning": false,
             "input": [
@@ -291,11 +291,11 @@
       {
         "id": "main",
         "default": true,
-        "name": "\u4e3b\u52a9\u7406",
+        "name": "主助理",
         "workspace": "/workspace/projects/workspace",
         "identity": {
-          "name": "\u4e3b\u52a9\u7406",
-          "emoji": "\ud83e\udd16"
+          "name": "主助理",
+          "emoji": "🤖"
         },
         "model": "minimax/M2.7-highspeed",
         "subagents": {
@@ -308,11 +308,11 @@
       },
       {
         "id": "stock",
-        "name": "\u80a1\u7968\u4e13\u5bb6",
+        "name": "股票专家",
         "workspace": "/workspace/projects/agents/stock",
         "identity": {
-          "name": "\u80a1\u7968\u4e13\u5bb6",
-          "emoji": "\ud83d\udcca"
+          "name": "股票专家",
+          "emoji": "📊"
         },
         "model": "minimax/M2.7-highspeed",
         "subagents": {
@@ -323,11 +323,11 @@
       },
       {
         "id": "code",
-        "name": "\u4ee3\u7801\u52a9\u624b",
+        "name": "代码助手",
         "workspace": "/workspace/projects/agents/code",
         "identity": {
-          "name": "\u4ee3\u7801\u52a9\u624b",
-          "emoji": "\ud83d\udcbb"
+          "name": "代码助手",
+          "emoji": "💻"
         },
         "model": "minimax/M2.7-highspeed",
         "subagents": {
@@ -551,7 +551,8 @@
       "memos-cloud-openclaw-plugin",
       "coze-openclaw-plugin",
       "minimax",
-      "browser"
+      "browser",
+      "memory-core"
     ],
     "entries": {
       "feishu": {
