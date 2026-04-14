@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.4.11",
-    "lastTouchedAt": "2026-04-13T04:57:04.277Z"
+    "lastTouchedAt": "2026-04-13T07:30:27.985Z"
   },
   "wizard": {
     "lastRunAt": "2026-04-10T17:02:12.992Z",
@@ -389,7 +389,8 @@
             "ou_ecc5f6e32e1fce5bb204da93e7bf23ce"
           ],
           "groupAllowFrom": [
-            "oc_023ff84519aac218088d4fe98c9a7584"
+            "oc_023ff84519aac218088d4fe98c9a7584",
+            "oc_c9ca98528b2a6d38f528696e11cb0ae4"
           ],
           "dmPolicy": "pairing"
         },
